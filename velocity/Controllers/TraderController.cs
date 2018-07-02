@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Results;
 using TraderDataAccess;
 
 
@@ -18,11 +19,20 @@ namespace velocity.Controllers
                 return entities.Traders.ToList();
             }
         }
-        public Trader Get(int id)
+        //public Trader Get(int id)
+        //{
+        //    using (velocityEntities entities = new velocityEntities())
+        //    {
+        //        return entities.Traders.FirstOrDefault(e => e.id == id);
+        //    }
+        //}
+
+        [HttpGet]
+        public JsonResult<Trader> Get(int id)
         {
             using (velocityEntities entities = new velocityEntities())
             {
-                return entities.Traders.FirstOrDefault(e => e.id == id);
+                return Json(entities.Traders.FirstOrDefault(e => e.id == id));
             }
         }
     }
