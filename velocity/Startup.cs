@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using velocity.Models;
+using velocity.Models.DataManager;
+using velocity.Models.Repository;
 using velocity.Repository;
 
 namespace velocity
@@ -24,11 +26,15 @@ namespace velocity
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
             services.AddDbContext<VelocityContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("VelocityConnection")));
+            //services.AddDbContext<TodoContext>(opt =>
+            //    opt.UseInMemoryDatabase("TodoList"));
 
             services.AddSingleton<ITraderRepository, TraderRepository>();
+            services.AddScoped(typeof(IDataRepository<User, int>), typeof(UserManager));
+            
+            services.AddMvc();
 
         }
 
