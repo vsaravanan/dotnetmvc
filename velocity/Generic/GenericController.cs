@@ -55,7 +55,7 @@ namespace velocity.Generic
 
 
         // DELETE: api/User/5
-        [Route("[controller]/{id}")]
+        [Route("[controller]/Delete/{id}")]
         [HttpDelete]
         //[HttpDelete("{id}")]
         public async void Delete(K id)
