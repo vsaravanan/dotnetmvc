@@ -5,16 +5,15 @@ using velocity.Generic;
 
 namespace velocity.Models
 {
-    public class User : IPK<int>
+    public class RoleFeature : IPK<int>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public string bankId { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public bool  isActive { get; set; }
-        public bool isMaker { get; set; }
+        public string roleName { get; set; }
+        public string featureName { get; set; }
+        public bool   isActive { get; set; }
+        public bool   isMaker { get; set; }
         public Nullable<DateTime> makerDt { get; set; }
         public string makerBy { get; set; }
         public Nullable<DateTime> checkDt { get; set; }

@@ -1,0 +1,71 @@
+﻿    //public class UserController : Controller
+    //{
+
+
+    //    public UserManager mgr { get; set; }
+
+    //    public UserController(UserManager repo)
+    //    {
+    //        mgr = repo;
+    //    }
+
+
+    //// GET: api/User
+    //[HttpGet]
+    //public Task<IEnumerable<User>> Get()
+    //{
+    //    return mgr.GetAll();
+
+    //}
+
+    //// GET: api/User/5
+    //[HttpGet("{id}", Name = "Get")]
+    //public Task<User> Get(int id)
+    //{
+    //    return mgr.Get(id);
+    //}
+
+    //// GET: api/User/Find
+    //[HttpGet("Find/{key}", Name = "Find")]
+    //public User Find(int key)
+    //{
+    //    return mgr.Find(key);
+    //}
+
+    //// POST: api/User
+    //[HttpPost]
+    //public async void Post([FromBody]User value)
+    //{
+    //    await mgr.Add(value);
+
+    //}
+
+    //// POST: api/Login
+    //[HttpPost("Login")]
+    //public string Login([FromBody]User value)
+    //{
+
+
+    //    var loginValidated = mgr.LoginValidate(value.bankId, value.password)
+    //        ? Constants.Constants.Success
+    //        : Constants.Constants.Failure
+    //        ;
+    //    return loginValidated;
+
+    //}
+
+    //// DELETE: api/User/5
+    //[HttpDelete("{id}")]
+    //public async void Delete(int id)
+    //{
+    //    await mgr.Delete(id);
+    //}
+
+    //// PUT: api/User
+    //[HttpPut]
+    //public async void Put([FromBody]User value)
+    //{
+    //    await mgr.Update(value);
+
+    //}
+    //}

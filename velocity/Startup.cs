@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using velocity.DataManager;
 using velocity.Models;
-using velocity.Models.DataManager;
-using velocity.Models.Repository;
 using velocity.Repository;
 
 namespace velocity
@@ -23,7 +18,6 @@ namespace velocity
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<VelocityContext>(options =>
@@ -32,8 +26,13 @@ namespace velocity
             //    opt.UseInMemoryDatabase("TodoList"));
 
             services.AddSingleton<ITraderRepository, TraderRepository>();
-            services.AddScoped(typeof(IDataRepository<User, int>), typeof(UserManager));
-            
+            //services.AddScoped(typeof(IDataRepository<User, int>), typeof(UserManager));
+
+            services.AddScoped<UserManager>();
+            services.AddScoped<RoleManager>();
+            services.AddScoped<FeatureManager>();
+            services.AddScoped<RoleFeatureManager>();
+
             services.AddMvc();
 
         }

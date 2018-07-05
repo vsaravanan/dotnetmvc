@@ -1,5 +1,3 @@
-using System;
-
 namespace velocity.Models
 {
     public class ErrorViewModel
