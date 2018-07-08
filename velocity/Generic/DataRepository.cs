@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,12 +35,69 @@ namespace velocity.Generic
             return row;
         }
 
-        public T Find(K key)
+        private static string Tsearch(IList<string> sql, JToken key)
         {
-            return ctx.Set<T>()
-                .AsNoTracking()
-                .Where(e => e.id.Equals(key))
-                .SingleOrDefault();
+
+
+            while (key != null && key.HasValues)
+            {
+                string tmp = key.First.Value<string>();
+                string tmplower = "";
+
+                if (tmp != null)
+                {
+                    tmp = tmp.TrimStart();
+                    tmplower = tmp.ToLower();
+                }
+
+                string[] opsNull = { "null", "not null" };
+                string[] opsIsNull = { "is null", "is not null" };
+                string[] operators3 = { "!=", "<=", ">=", "<",">","=" };
+
+                if (Array.IndexOf(opsNull, tmplower) > -1)
+                    sql.Add(key.Path + " is " + tmplower);
+                else if (Array.IndexOf(opsIsNull, tmplower) > -1)
+                    sql.Add(key.Path + " " + tmplower);
+                else if (tmplower.StartsWith("not like"))
+                    sql.Add(key.Path + " not like '" + tmp.Substring(8).TrimStart() + "'");
+                else if (tmplower.StartsWith("not"))
+                    sql.Add(key.Path + " not like '" + tmp.Substring(3).TrimStart() + "'");
+                else if (tmplower.StartsWith("like"))
+                    sql.Add(key.Path + " like '" + tmp.Substring(4).TrimStart() + "'");
+                else if (Array.IndexOf(operators3, tmplower.Substring(0, 2)) > -1)
+                    sql.Add(key.Path + " " + tmplower.Substring(0, 2) + " '" + tmp.Substring(2).TrimStart() + "'");
+                else if (Array.IndexOf(operators3, tmplower.Substring(0, 1)) > -1)
+                    sql.Add(key.Path + " " + tmplower.Substring(0, 1) + " '" + tmp.Substring(1).TrimStart() + "'");
+                else if (tmp.Contains("%"))
+                    sql.Add(key.Path + " like '" + tmp + "'");
+                else
+                    sql.Add(key.Path + " = '" + tmp + "'");
+
+                return Tsearch(sql, key.Next);
+            }
+
+            string newsql = "";
+            if (sql.Count != 0)
+            {
+                newsql = " where " +  string.Join(" and ", sql);
+            }
+
+
+            return newsql;
+        }
+
+        public async Task<IEnumerable<T>> Find(JObject key)
+        {
+
+            string where = Tsearch(new List<string>(), key.First);
+
+            string fullsql = "select * from " + "\"" + typeof(T).Name + "\"" + where;
+
+            System.Diagnostics.Debug.WriteLine(fullsql);
+
+            var list = await ctx.Set<T>().FromSql<T>(fullsql).AsNoTracking().ToListAsync();
+            return list;
+
         }
 
         public async Task Add(T obj)

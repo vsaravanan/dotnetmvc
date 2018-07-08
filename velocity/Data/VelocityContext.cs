@@ -14,6 +14,7 @@ namespace velocity.Models
         public DbSet<Role> Role { get; set; }
         public DbSet<Feature> Feature { get; set; }
         public DbSet<RoleFeature> RoleFeature { get; set; }
+        public DbSet<FormTemplate> FormTemplate { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

@@ -32,6 +32,7 @@ namespace velocity
             services.AddScoped<RoleManager>();
             services.AddScoped<FeatureManager>();
             services.AddScoped<RoleFeatureManager>();
+            services.AddScoped<FormTemplateManager>();
 
             services.AddMvc();
 

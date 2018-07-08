@@ -2,6 +2,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AttributeRouting;
+using System;
+using velocity.DataManager;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace velocity.Generic
 {
@@ -38,9 +42,11 @@ namespace velocity.Generic
 
         // GET: api/User/Find
         //[HttpGet("Find/{key}", Name = "Find")]
-        [Route("[controller]/Find/{key}")]
-        public T Find(K key)
+        [Route("[controller]/Find")]
+        [HttpPost]
+        public Task<IEnumerable<T>> Find([FromBody] JObject key)
         {
+
             return mgr.Find(key);
         }
 
