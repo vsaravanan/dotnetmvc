@@ -108,6 +108,14 @@ namespace velocity.Generic
 
         }
 
+        public async Task Add(IEnumerable<T> list)
+        {
+
+            ctx.Set<T>().AddRange(list);
+            await ctx.SaveChangesAsync();
+
+        }
+
         public async Task Delete(K id)
         {
             var entity = ctx.Set<T>().Find(id);
@@ -116,12 +124,31 @@ namespace velocity.Generic
 
         }
 
+        public async Task Delete(IEnumerable<T> list)
+        {
+            var row = list.FirstOrDefault(obj => !TypeHelper.Defined(obj.id));
+            if (row != null)
+                return;
+            ctx.Set<T>().RemoveRange(list);
+            await ctx.SaveChangesAsync();
+
+        }
 
         public async Task Update(T obj)
         {
 
             if (! TypeHelper.Defined(obj.id)) return;
             ctx.Set<T>().Update(obj);
+            await ctx.SaveChangesAsync();
+
+        }
+
+        public async Task Update(IEnumerable<T> list)
+        {
+            var row = list.FirstOrDefault(obj => !TypeHelper.Defined(obj.id));
+            if (row != null)
+                return;
+            ctx.Set<T>().UpdateRange(list);
             await ctx.SaveChangesAsync();
 
         }

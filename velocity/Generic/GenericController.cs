@@ -6,6 +6,7 @@ using System;
 using velocity.DataManager;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace velocity.Generic
 {
@@ -53,26 +54,55 @@ namespace velocity.Generic
         // POST: api/User
         [Route("[controller]")]
         [HttpPost]
-        public async void Post([FromBody] T value)
+        public async Task Post([FromBody] T value)
         {
             await mgr.Add(value);
 
         }
 
+        [Route("[controller]/AddMulti")]
+        [HttpPost]
+        public async Task Post([FromBody] IEnumerable<T> value)
+        {
+            await mgr.Add(value);
+
+        }
 
         // DELETE: api/User/5
         [Route("[controller]/Delete/{id}")]
         [HttpDelete]
-        //[HttpDelete("{id}")]
-        public async void Delete(K id)
+        public async Task Delete(K id)
         {
             await mgr.Delete(id);
+        }
+
+        [Route("[controller]/Delete")]
+        [HttpDelete]
+        public async Task Delete([FromBody] T obj)
+        {
+            T[] t = {obj};
+            await mgr.Delete(t);
+        }
+
+        [Route("[controller]/DeleteMulti")]
+        [HttpDelete]
+        public async Task Delete([FromBody] IEnumerable<T> value)
+        {
+            await mgr.Delete(value);
         }
 
         // PUT: api/User
         [Route("[controller]")]
         [HttpPut]
-        public async void Put([FromBody]T value)
+        public async Task Put([FromBody]T value)
+        {
+            await mgr.Update(value);
+
+        }
+
+        [Route("[controller]/UpdateMulti")]
+        [HttpPut]
+        public async Task Put([FromBody] IEnumerable<T> value)
         {
             await mgr.Update(value);
 

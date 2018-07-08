@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace velocity.Generic
@@ -10,7 +11,10 @@ namespace velocity.Generic
         Task<T> Get(K id);
         Task<IEnumerable<T>> Find(JObject key);
         Task Add(T obj);
+        Task Add(IEnumerable<T> list);
         Task Delete(K id);
+        Task Delete(IEnumerable<T> list);
         Task Update(T obj);
+        Task Update(IEnumerable<T> list);
     }
 }
