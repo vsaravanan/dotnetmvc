@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using velocity.DataManager;
 using velocity.Models;
 using velocity.Repository;
@@ -33,6 +34,13 @@ namespace velocity
             services.AddScoped<FeatureManager>();
             services.AddScoped<RoleFeatureManager>();
             services.AddScoped<FormTemplateManager>();
+            services.AddScoped<NamedBankingProductAttributeManager>();
+
+            services.AddDistributedMemoryCache();
+            var Timeout = Convert.ToDouble(Configuration.GetSection("Settings")["Timeout"]);
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(Timeout);
+            });
 
             services.AddMvc();
 
@@ -52,6 +60,8 @@ namespace velocity
             }
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

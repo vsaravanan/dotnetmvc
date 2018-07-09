@@ -13,6 +13,8 @@ namespace velocity.Models
         public string bankId { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public string role { get; set; }
+        public string avatar { get; set; }
         public bool  isActive { get; set; }
         public bool isMaker { get; set; }
         public Nullable<DateTime> makerDt { get; set; }

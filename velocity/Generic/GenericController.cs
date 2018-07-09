@@ -7,6 +7,7 @@ using velocity.DataManager;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace velocity.Generic
 {
@@ -23,12 +24,23 @@ namespace velocity.Generic
             mgr = repo;
         }
 
+        protected void CheckAuthentication()
+        {
+            var token = HttpContext.Session.GetString(Constants.Constants.SessionId);
+            if (token == null)
+            {
+                throw new System.AccessViolationException("login invalid");
+            }
+        }
+
         // GET: api/User
         //[HttpGet]
         [Route("[controller]")]
-        public Task<IEnumerable<T>> Get()
+        public  Task<IEnumerable<T>> Get()
         {
-            return mgr.GetAll();
+
+            CheckAuthentication();
+            return  mgr.GetAll();
 
         }
 
@@ -38,6 +50,7 @@ namespace velocity.Generic
         [Route("[controller]/{id:int}")]
         public Task<T> Get(K id)
         {
+            CheckAuthentication();
             return mgr.Get(id);
         }
 
@@ -47,7 +60,7 @@ namespace velocity.Generic
         [HttpPost]
         public Task<IEnumerable<T>> Find([FromBody] JObject key)
         {
-
+            CheckAuthentication();
             return mgr.Find(key);
         }
 
@@ -56,6 +69,7 @@ namespace velocity.Generic
         [HttpPost]
         public async Task Post([FromBody] T value)
         {
+            CheckAuthentication();
             await mgr.Add(value);
 
         }
@@ -64,6 +78,7 @@ namespace velocity.Generic
         [HttpPost]
         public async Task Post([FromBody] IEnumerable<T> value)
         {
+            CheckAuthentication();
             await mgr.Add(value);
 
         }
@@ -73,6 +88,8 @@ namespace velocity.Generic
         [HttpDelete]
         public async Task Delete(K id)
         {
+            CheckAuthentication();
+
             await mgr.Delete(id);
         }
 
@@ -80,6 +97,8 @@ namespace velocity.Generic
         [HttpDelete]
         public async Task Delete([FromBody] T obj)
         {
+            CheckAuthentication();
+
             T[] t = {obj};
             await mgr.Delete(t);
         }
@@ -88,6 +107,8 @@ namespace velocity.Generic
         [HttpDelete]
         public async Task Delete([FromBody] IEnumerable<T> value)
         {
+            CheckAuthentication();
+            
             await mgr.Delete(value);
         }
 
@@ -96,6 +117,7 @@ namespace velocity.Generic
         [HttpPut]
         public async Task Put([FromBody]T value)
         {
+            CheckAuthentication();
             await mgr.Update(value);
 
         }
@@ -104,6 +126,7 @@ namespace velocity.Generic
         [HttpPut]
         public async Task Put([FromBody] IEnumerable<T> value)
         {
+            CheckAuthentication();
             await mgr.Update(value);
 
         }

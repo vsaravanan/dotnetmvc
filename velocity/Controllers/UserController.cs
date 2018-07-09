@@ -2,6 +2,10 @@
 using velocity.Models;
 using velocity.Generic;
 using velocity.DataManager;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
+using velocity.Extn;
+
 
 namespace velocity.Controllers
 {
@@ -18,16 +22,39 @@ namespace velocity.Controllers
 
         // POST: api/Login
         [Route("[controller]/Login")]
-        //[HttpPost("Login")]
-        public string Login([FromBody]User value)
+        public System.Object Login([FromBody]User value)
         {
 
+            System.Diagnostics.Debug.WriteLine("Checking bank Id " + value.bankId + "   " );
 
-            var loginValidated = mgr.LoginValidate(value.bankId, value.password)
-                ? Constants.Constants.Success
-                : Constants.Constants.Failure
-                ;
-            return loginValidated;
+            var token = HttpContext.Session.GetString(Constants.Constants.SessionId);
+
+            var row = mgr.LoginValidate(value.bankId, value.password);
+
+
+            if (row.GetType() ==  typeof(velocity.Models.User) )
+            {
+                User user = (User) row;
+
+                if (token == null)
+                {
+                    token = Util.sessionId();
+                }
+                HttpContext.Session.SetString(Constants.Constants.SessionId, token);
+
+                return new
+                {
+                    user.bankId,
+                    user.username,
+                    user.role,
+                    user.avatar,
+                    token
+                };
+            }
+            else
+                return row;
+            //var jsonvalue = JObject.FromObject(retValue);
+            //if (jsonvalue["error"] == null)
 
         }
 
