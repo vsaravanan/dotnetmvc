@@ -5,7 +5,7 @@ using velocity.DataManager;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Linq;
 using velocity.Extn;
-
+using System;
 
 namespace velocity.Controllers
 {
@@ -36,7 +36,7 @@ namespace velocity.Controllers
             {
                 User user = (User) row;
 
-                if (token == null)
+                if (String.IsNullOrEmpty(token))
                 {
                     token = Util.sessionId();
                 }
@@ -52,7 +52,10 @@ namespace velocity.Controllers
                 };
             }
             else
+            {
+                HttpContext.Session.SetString(Constants.Constants.SessionId, "");
                 return row;
+            }
             //var jsonvalue = JObject.FromObject(retValue);
             //if (jsonvalue["error"] == null)
 

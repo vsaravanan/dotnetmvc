@@ -27,7 +27,7 @@ namespace velocity.Generic
         protected void CheckAuthentication()
         {
             var token = HttpContext.Session.GetString(Constants.Constants.SessionId);
-            if (token == null)
+            if (String.IsNullOrEmpty(token))
             {
                 throw new System.AccessViolationException("login invalid");
             }
