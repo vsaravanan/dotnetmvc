@@ -12,6 +12,8 @@ create table ModelTemplate (
 	TargetModelAttribute			nvarchar(50) null,
 	Mandatory						nvarchar(1) null,
 	OnScreen						nvarchar(1) null,
+	widgetType						nvarchar(50) null,
+	"values"						nvarchar(200) null,
 	UpdatedDt						datetime null,
 	UpdatedBy						nvarchar(50) null,
 	ApprovedDt						datetime null,

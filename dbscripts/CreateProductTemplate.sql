@@ -11,6 +11,8 @@ create table ProductTemplate (
 	BPAID							int null,
 	Mandatory						nvarchar(1) null,
 	OnScreen						nvarchar(1) null,
+	widgetType						nvarchar(50) null,
+	"values"						nvarchar(200) null,
 	UpdatedDt						datetime null,
 	UpdatedBy						nvarchar(50) null,
 	ApprovedDt						datetime null,

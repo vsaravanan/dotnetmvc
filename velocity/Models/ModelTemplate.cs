@@ -16,6 +16,8 @@ namespace velocity.Models
         public string targetModelAttribute { get; set; }
         public string mandatory { get; set; }
         public string onScreen { get; set; }
+        public string widgetType { get; set; }
+        public string values { get; set; }
         public Nullable<DateTime> UpdatedDt { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<DateTime> ApprovedDt { get; set; }
