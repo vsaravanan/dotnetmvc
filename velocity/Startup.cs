@@ -46,6 +46,7 @@ namespace velocity
             services.AddScoped<MifidManager>();
             services.AddScoped<ModelTemplateManager>();
             services.AddScoped<ProductTemplateManager>();
+            services.AddScoped<TradeManager>();
 
             services.AddDistributedMemoryCache();
             var Timeout = Convert.ToDouble(Configuration.GetSection("Settings")["Timeout"]);

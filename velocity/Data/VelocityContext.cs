@@ -19,7 +19,8 @@ namespace velocity.Models
         public DbSet<Mifid> Mifid { get; set; }
         public DbSet<ModelTemplate> ModelTemplate { get; set; }
         public DbSet<ProductTemplate> ProductTemplate { get; set; }
-        
+        public DbSet<Trade> Trade { get; set; }
+
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //}
