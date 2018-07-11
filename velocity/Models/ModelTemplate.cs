@@ -11,7 +11,7 @@ namespace velocity.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         public string Product { get; set; }
-        public int namedBankingProductAttribute { get; set; }
+        public string namedBankingProductAttribute { get; set; }
         public int bpaid { get; set; }
         public string targetModelAttribute { get; set; }
         public string mandatory { get; set; }
