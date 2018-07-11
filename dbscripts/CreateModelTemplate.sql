@@ -7,7 +7,7 @@ go
 create table CreateModelTemplate (
 	id int primary key identity,
 	Product							nvarchar(50) null,
-	NamedBankingProductAttributes	nvarchar(200) null,
+	NamedBankingProductAttribute	nvarchar(200) null,
 	BPAID							int null,
 	TargetModelAttribute			nvarchar(50) null,
 	Mandatory						nvarchar(1) null,

@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using velocity.Generic;
 using velocity.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace velocity.DataManager
 {

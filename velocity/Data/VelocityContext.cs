@@ -16,7 +16,10 @@ namespace velocity.Models
         public DbSet<RoleFeature> RoleFeature { get; set; }
         public DbSet<FormTemplate> FormTemplate { get; set; }
         public DbSet<NamedBankingProductAttribute> NamedBankingProductAttribute { get; set; }
-
+        public DbSet<Mifid> Mifid { get; set; }
+        public DbSet<ModelTemplate> ModelTemplate { get; set; }
+        public DbSet<ProductTemplate> ProductTemplate { get; set; }
+        
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //}

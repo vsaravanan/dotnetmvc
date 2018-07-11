@@ -69,3 +69,15 @@
 
     //}
     //}
+
+
+
+            //env.EnvironmentName = EnvironmentName.Production;
+
+                //app.UseExceptionHandler("/Home/Error");
+                //app.UseBrowserLink();
+                //app.UseStatusCodePages();
+                //app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
+                //app.UseDeveloperExceptionPage();
+                //app.UseStatusCodePagesWithReExecute("/error/{0}");
+                //app.UseStatusCodePagesWithRedirects("/error/{0}");

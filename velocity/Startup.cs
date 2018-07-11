@@ -43,6 +43,9 @@ namespace velocity
             services.AddScoped<RoleFeatureManager>();
             services.AddScoped<FormTemplateManager>();
             services.AddScoped<NamedBankingProductAttributeManager>();
+            services.AddScoped<MifidManager>();
+            services.AddScoped<ModelTemplateManager>();
+            services.AddScoped<ProductTemplateManager>();
 
             services.AddDistributedMemoryCache();
             var Timeout = Convert.ToDouble(Configuration.GetSection("Settings")["Timeout"]);
