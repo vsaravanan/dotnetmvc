@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Generic\dummy.old" />
+    <None Remove="Generic\ErrorHandler.cs.old" />
+    <None Remove="Generic\IExceptionFilter.cs.old" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Generic\ErrorHandler.cs.old" />
+    <Compile Include="Generic\IExceptionFilter.cs.old" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AttributeRouting.WebApi" Version="3.5.6" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />

@@ -3,9 +3,9 @@ using velocity.Models;
 using velocity.Generic;
 using velocity.DataManager;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json.Linq;
 using velocity.Extn;
 using System;
+using System.Net;
 
 namespace velocity.Controllers
 {
@@ -20,9 +20,16 @@ namespace velocity.Controllers
             mgr = inmgr;
         }
 
+        [Route("Logout")]
+        public string Logout()
+        {
+            HttpContext.Session.SetString(Constants.Constants.SessionId, "");
+            return "Logout success";
+        }
+
         // POST: api/Login
-        [Route("[controller]/Login")]
-        public System.Object Login([FromBody]User value)
+        [Route("Login")]
+        public Object Login([FromBody]User value)
         {
 
             System.Diagnostics.Debug.WriteLine("Checking bank Id " + value.bankId + "   " );
@@ -54,7 +61,7 @@ namespace velocity.Controllers
             else
             {
                 HttpContext.Session.SetString(Constants.Constants.SessionId, "");
-                return row;
+                return StatusCode((int) HttpStatusCode.Unauthorized, (string) row);
             }
             //var jsonvalue = JObject.FromObject(retValue);
             //if (jsonvalue["error"] == null)

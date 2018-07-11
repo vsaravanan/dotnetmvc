@@ -1,0 +1,95 @@
+﻿         //CheckAuthentication();
+            //return mgr.GetAll();
+
+            //return NotFound("Product not found");
+            //return StatusCode(401, "dkdlflkkldf");
+            //var resp = new System.Net.Http.HttpRequestException("dlkfklkldlkd");
+
+            //throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
+            //var resp = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized)
+
+            //return System.Net.Http..HttpRequestMessageExtensions()
+
+            //throw resp;
+            //    .HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized)
+            //{
+            //    Content = new System.Net.Http.StringContent(string.Format("Invalid login")),
+            //    ReasonPhrase = "Invalid login"
+            //};
+            //return resp;
+            //return Request.CreateErrorResponse(null, HttpStatusCode.NotFound, "hjkdhfkjdfk");
+
+            //CheckAuthentication();
+            ////return StatusCode(403, "another specific string");
+            //return  mgr.GetAll();
+
+
+        //[ProducesResponseType(201)]
+        //[ProducesResponseType(400)]
+        //Task<IEnumerable<T>>
+        //public Task<IEnumerable<T>> Get()
+        //public IActionResult Get()
+
+        //private void ThrowResponseException(System.Net.HttpStatusCode statusCode, string message)
+        //{
+        //    var errorResponse = Request.CreateErrorResponse(statusCode, message);
+        //    throw new System.Web.Http.HttpResponseException(errorResponse);
+        //}
+
+            //var token = HttpContext.Session.GetString(Constants.Constants.SessionId);
+            //if (String.IsNullOrEmpty(token))
+            //{
+
+            //    //throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
+
+            //    var resp = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized)
+            //    {
+            //        Content = new System.Net.Http.StringContent(string.Format("Invalid login")),
+            //        ReasonPhrase = "Invalid login"
+            //    };
+            //    throw new System.Web.Http.HttpResponseException(resp);
+            //}
+
+
+        //[ProducesResponseType(404)]
+
+            //HttpRequestMessageExtensions Request
+            //HttpResponseMessage response = Request.CreateResponse(null, HttpStatusCode.Unauthorized, "ss");
+            //Response.Body = "dfkdkfklkd";
+            //ctx.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+
+            //return StatusCode(401, "dkdlflkkldf");
+                //Unauthorized();
+            //System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
+            //Response.StatusCode = 404;
+            //return View();
+
+			    public class CustomActionResult<T> : IActionResult
+
+    {
+
+        private System.Net.HttpStatusCode statusCode;
+
+        T data;
+
+        public CustomActionResult(System.Net.HttpStatusCode statusCode, T data)
+
+        {
+
+            this.statusCode = statusCode;
+
+            this.data = data;
+
+        }
+
+        public Task ExecuteResultAsync(ActionContext context)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        [Route("[controller]/error")]
+        [HttpGet]
+        public void Error()
+        {
+            throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
+        }
