@@ -17,3 +17,6 @@ create table ProductTemplate (
 	ApprovedBy						nvarchar(50) null
 );
 
+SET IDENTITY_INSERT [dbo].[ProductTemplate] ON 
+INSERT [dbo].[ProductTemplate] ([id], [Product], [NamedBankingProductAttribute], [BPAID], [Mandatory], [OnScreen], [UpdatedDt], [UpdatedBy], [ApprovedDt], [ApprovedBy]) VALUES (1, N'NOTES', N'Instrument identification code', 1, N'Y', N'Y', CAST(N'2018-03-06T11:00:00.000' AS DateTime), N'Haridasani, Ajay Shankar', CAST(N'2018-03-06T11:00:00.000' AS DateTime), N'Haridasani, Ajay Shankar')
+SET IDENTITY_INSERT [dbo].[ProductTemplate] OFF

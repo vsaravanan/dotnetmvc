@@ -1,10 +1,10 @@
 use velocity
 go
 
-drop table CreateModelTemplate;
+drop table ModelTemplate;
 go
 
-create table CreateModelTemplate (
+create table ModelTemplate (
 	id int primary key identity,
 	Product							nvarchar(50) null,
 	NamedBankingProductAttribute	nvarchar(200) null,
@@ -18,3 +18,6 @@ create table CreateModelTemplate (
 	ApprovedBy						nvarchar(50) null
 );
 
+SET IDENTITY_INSERT [dbo].[ModelTemplate] ON 
+INSERT [dbo].[ModelTemplate] ([id], [Product], [NamedBankingProductAttribute], [BPAID], [TargetModelAttribute], [Mandatory], [OnScreen], [UpdatedDt], [UpdatedBy], [ApprovedDt], [ApprovedBy]) VALUES (1, N'NOTES', N'Instrument identification code', 1, N'APA.001.01', N'Y', N'Y', CAST(N'2018-03-06T11:00:00.000' AS DateTime), N'Haridasani, Ajay Shankar', CAST(N'2018-03-06T11:00:00.000' AS DateTime), N'Haridasani, Ajay Shankar')
+SET IDENTITY_INSERT [dbo].[ModelTemplate] OFF
