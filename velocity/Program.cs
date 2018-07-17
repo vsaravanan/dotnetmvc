@@ -12,6 +12,7 @@ namespace velocity
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                //.UseEnvironment("Production")
                 .UseEnvironment("Development")
                 .UseKestrel()
                 .UseIISIntegration()

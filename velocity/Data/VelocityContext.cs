@@ -20,6 +20,7 @@ namespace velocity.Models
         public DbSet<ModelTemplate> ModelTemplate { get; set; }
         public DbSet<ProductTemplate> ProductTemplate { get; set; }
         public DbSet<Trade> Trade { get; set; }
+        public DbSet<Fee> Fee { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

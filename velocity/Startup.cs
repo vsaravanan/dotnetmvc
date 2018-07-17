@@ -47,6 +47,7 @@ namespace velocity
             services.AddScoped<ModelTemplateManager>();
             services.AddScoped<ProductTemplateManager>();
             services.AddScoped<TradeManager>();
+            services.AddScoped<FeeManager>();
 
             services.AddDistributedMemoryCache();
             var Timeout = Convert.ToDouble(Configuration.GetSection("Settings")["Timeout"]);
@@ -68,9 +69,12 @@ namespace velocity
             {
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
+                Constants.Constants.IsDev = true;
+
             }
             else
             {
+                Constants.Constants.IsDev = false;
                 app.UseExceptionHandler("/Home/Error");
             }
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using velocity.Extn;
 using System;
 using System.Net;
+using Newtonsoft.Json;
 
 namespace velocity.Controllers
 {
@@ -39,32 +40,32 @@ namespace velocity.Controllers
             var row = mgr.LoginValidate(value.bankId, value.password);
 
 
-            if (row.GetType() ==  typeof(velocity.Models.User) )
-            {
-                User user = (User) row;
-
-                if (String.IsNullOrEmpty(token))
-                {
-                    token = Util.sessionId();
-                }
-                HttpContext.Session.SetString(Constants.Constants.SessionId, token);
-
-                return new
-                {
-                    user.bankId,
-                    user.username,
-                    user.role,
-                    user.avatar,
-                    token
-                };
-            }
-            else
+            if (row.GetType() !=  typeof(velocity.Models.User) )
             {
                 HttpContext.Session.SetString(Constants.Constants.SessionId, "");
-                return StatusCode((int) HttpStatusCode.Unauthorized, (string) row);
+                //return StatusCode((int) HttpStatusCode.Unauthorized, (string) row);
+                ErrorData errors = new ErrorData((int)HttpStatusCode.Unauthorized, (string)row);
+                TempData["Error"] = JsonConvert.SerializeObject(errors);
+                throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
+
             }
-            //var jsonvalue = JObject.FromObject(retValue);
-            //if (jsonvalue["error"] == null)
+
+            User user = (User) row;
+
+            if (String.IsNullOrEmpty(token))
+            {
+                token = Util.sessionId();
+            }
+            HttpContext.Session.SetString(Constants.Constants.SessionId, token);
+
+            return new
+            {
+                user.bankId,
+                user.username,
+                user.role,
+                user.avatar,
+                token
+            };
 
         }
 

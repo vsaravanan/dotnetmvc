@@ -6,6 +6,8 @@ using System;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Http;
 using System.Net;
+using Newtonsoft.Json;
+using velocity.Models;
 
 namespace velocity.Generic
 {
@@ -22,31 +24,37 @@ namespace velocity.Generic
             mgr = repo;
         }
 
-        protected ObjectResult CheckAuthentication()
+        protected void CheckAuthentication()
         {
+            if ( Constants.Constants.IsDev ) return;
             var token = HttpContext.Session.GetString(Constants.Constants.SessionId);
             if (String.IsNullOrEmpty(token))
-                return StatusCode((int)HttpStatusCode.Unauthorized, "Invalid login");
-            else
-                return null;
+            {
+                ErrorData errors = new ErrorData((int)HttpStatusCode.Unauthorized, "Invalid login");
+                TempData["Error"] = JsonConvert.SerializeObject(errors);
+                throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
+                //return RedirectToAction("Error","Home");
+            }
+
         }
+
+
 
         // GET: api/User
         [Route("[controller]")]
-        public async Task<Object> Get()
+        public async Task<IEnumerable<T>> Get()
         {
-            var error = CheckAuthentication();
-            if (error != null) return error;
+            CheckAuthentication();
             return await mgr.GetAll();
         }
 
         // GET: api/User/5
         //[HttpGet("[controller]/{id}", Name = "Get")]
         [Route("[controller]/{id:int}")]
-        public async Task<Object> Get(K id)
+        public async Task<T> Get(K id)
         {
-            var error = CheckAuthentication();
-            if (error != null) return error;
+
+            CheckAuthentication();
             return await mgr.Get(id);
 
         }
@@ -55,90 +63,75 @@ namespace velocity.Generic
         //[HttpGet("Find/{key}", Name = "Find")]
         [Route("[controller]/Find")]
         [HttpPost]
-        public async Task<Object> Find([FromBody] JObject key)
+        public async Task<IEnumerable<T>> Find([FromBody] JObject key)
         {
-            var error = CheckAuthentication();
-            if (error != null) return error;
+
+            CheckAuthentication();
             return await mgr.Find(key);
         }
 
         // POST: api/User
         [Route("[controller]")]
         [HttpPost]
-        public async Task<Object> Post([FromBody] T value)
+        public async Task Post([FromBody] T value)
         {
-            var error = CheckAuthentication();
-            if (error != null) return error;
+            CheckAuthentication();
             await mgr.Add(value);
-            return Constants.Constants.Success;
 
         }
 
         [Route("[controller]/AddMulti")]
         [HttpPost]
-        public async Task<Object> Post([FromBody] IEnumerable<T> value)
+        public async Task Post([FromBody] IEnumerable<T> value)
         {
-            var error = CheckAuthentication();
-            if (error != null) return error;
+            CheckAuthentication();
             await mgr.Add(value);
-            return Constants.Constants.Success;
-
         }
 
         // DELETE: api/User/5
         [Route("[controller]/Delete/{id}")]
         [HttpDelete]
-        public async Task<Object> Delete(K id)
+        public async Task Delete(K id)
         {
-            var error = CheckAuthentication();
-            if (error != null) return error;
+            CheckAuthentication();
             await mgr.Delete(id);
-            return Constants.Constants.Success;
         }
 
         [Route("[controller]/Delete")]
         [HttpDelete]
-        public async Task<Object> Delete([FromBody] T obj)
+        public async Task Delete([FromBody] T obj)
         {
-            var error = CheckAuthentication();
-            if (error != null) return error;
+            CheckAuthentication();
             T[] t = { obj };
             await mgr.Delete(t);
-            return Constants.Constants.Success;
         }
 
         [Route("[controller]/DeleteMulti")]
         [HttpDelete]
-        public async Task<Object> Delete([FromBody] IEnumerable<T> value)
+        public async Task Delete([FromBody] IEnumerable<T> value)
         {
 
-            var error = CheckAuthentication();
-            if (error != null) return error;
+            CheckAuthentication();
             await mgr.Delete(value);
-            return Constants.Constants.Success;
 
         }
 
         // PUT: api/User
         [Route("[controller]")]
         [HttpPut]
-        public async Task<Object> Put([FromBody]T value)
+        public async Task Put([FromBody]T value)
         {
-            var error = CheckAuthentication();
-            if (error != null) return error;
+            CheckAuthentication();
             await mgr.Update(value);
-            return Constants.Constants.Success;
 
         }
 
         [Route("[controller]/UpdateMulti")]
         [HttpPut]
-        public async Task<Object> Put([FromBody] IEnumerable<T> value)
+        public async Task Put([FromBody] IEnumerable<T> value)
         {
-            var error = CheckAuthentication();
-            if (error != null) return error;
+            CheckAuthentication();
             await mgr.Update(value);
-            return Constants.Constants.Success;
 
         }
     }

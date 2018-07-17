@@ -4,7 +4,6 @@ using velocity.DataManager;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System;
 
 namespace velocity.Controllers
 {
@@ -20,10 +19,9 @@ namespace velocity.Controllers
         }
 
         [Route("[controller]/GetSectionFields")]
-        public Object GetSectionFields()
+        public Task<IDictionary<string, List<string>>> GetSectionFields()
         {
-            var error = CheckAuthentication();
-            if (error != null) return error;
+            CheckAuthentication();
             return mgr.GetSectionFields();
         }
 
