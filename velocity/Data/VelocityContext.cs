@@ -21,6 +21,7 @@ namespace velocity.Models
         public DbSet<ProductTemplate> ProductTemplate { get; set; }
         public DbSet<Trade> Trade { get; set; }
         public DbSet<Fee> Fee { get; set; }
+        public DbSet<MinMax> MinMax { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

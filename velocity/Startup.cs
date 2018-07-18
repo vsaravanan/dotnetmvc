@@ -48,6 +48,7 @@ namespace velocity
             services.AddScoped<ProductTemplateManager>();
             services.AddScoped<TradeManager>();
             services.AddScoped<FeeManager>();
+            services.AddScoped<MinMaxManager>();
 
             services.AddDistributedMemoryCache();
             var Timeout = Convert.ToDouble(Configuration.GetSection("Settings")["Timeout"]);
