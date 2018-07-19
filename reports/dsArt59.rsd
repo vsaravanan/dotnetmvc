@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>dsvelocity</DataSourceReference>
+      <CommandText>select * from DataArt59</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="scbRef">
+        <DataField>scbRef</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_cif">
+        <DataField>o_pdf_cif</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_cif_buyer">
+        <DataField>o_pdf_cif_buyer</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_cif_seller">
+        <DataField>o_pdf_cif_seller</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_h20">
+        <DataField>o_pdf_h20</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b2">
+        <DataField>o_pdf_b2</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b4">
+        <DataField>o_pdf_b4</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b6">
+        <DataField>o_pdf_b6</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b7">
+        <DataField>o_pdf_b7</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b9">
+        <DataField>o_pdf_b9</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b11">
+        <DataField>o_pdf_b11</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b13">
+        <DataField>o_pdf_b13</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b15">
+        <DataField>o_pdf_b15</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b16">
+        <DataField>o_pdf_b16</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b18">
+        <DataField>o_pdf_b18</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b20">
+        <DataField>o_pdf_b20</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b21">
+        <DataField>o_pdf_b21</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b23">
+        <DataField>o_pdf_b23</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b24">
+        <DataField>o_pdf_b24</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b25">
+        <DataField>o_pdf_b25</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b26">
+        <DataField>o_pdf_b26</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b28">
+        <DataField>o_pdf_b28</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b29">
+        <DataField>o_pdf_b29</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b31">
+        <DataField>o_pdf_b31</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b32">
+        <DataField>o_pdf_b32</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b34">
+        <DataField>o_pdf_b34</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b37">
+        <DataField>o_pdf_b37</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="o_pdf_b38">
+        <DataField>o_pdf_b38</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ORDERNATURE">
+        <DataField>ORDERNATURE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="record_id">
+        <DataField>record_id</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
