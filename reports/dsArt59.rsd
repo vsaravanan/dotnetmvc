@@ -8,7 +8,7 @@
           <ReadOnly>false</ReadOnly>
           <Nullable>false</Nullable>
           <OmitFromQuery>false</OmitFromQuery>
-          <rd:DbType>String</rd:DbType>
+          <rd:DbType>Object</rd:DbType>
         </DataSetParameter>
       </DataSetParameters>
       <CommandText>SELECT scbRef, o_pdf_cif, o_pdf_cif_buyer, o_pdf_cif_seller, o_pdf_h20, o_pdf_b2, o_pdf_b4, o_pdf_b6, o_pdf_b7, o_pdf_b9, o_pdf_b11, o_pdf_b13, o_pdf_b15, o_pdf_b16, o_pdf_b18, o_pdf_b20, o_pdf_b21, o_pdf_b23, o_pdf_b24, o_pdf_b25, 
@@ -138,14 +138,5 @@ WHERE  (o_pdf_cif = @cif)</CommandText>
         <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
     </Fields>
-    <Filters>
-      <Filter>
-        <FilterExpression>=Fields!o_pdf_cif.Value</FilterExpression>
-        <Operator>Equal</Operator>
-        <FilterValues>
-          <FilterValue>@cif</FilterValue>
-        </FilterValues>
-      </Filter>
-    </Filters>
   </DataSet>
 </SharedDataSet>
