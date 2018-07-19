@@ -10,9 +10,14 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="dsArt59">
       <SharedDataSet>
         <SharedDataSetReference>dsArt59</SharedDataSetReference>
+        <QueryParameters>
+          <QueryParameter Name="@cif">
+            <Value>=Parameters!cif.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
       </SharedDataSet>
       <Fields>
         <Field Name="scbRef">
@@ -180,9 +185,9 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!scbRef.Value</Value>
+                    <Value>=First(Fields!scbRef.Value, "dsArt59")</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -194,7 +199,7 @@
             <Top>0.55597cm</Top>
             <Left>6.99771cm</Left>
             <Height>0.6cm</Height>
-            <Width>7.2625cm</Width>
+            <Width>7.26251cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1343,10 +1348,28 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="cif">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>271408</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>cif</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>cif</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
