@@ -3,7 +3,16 @@
   <DataSet Name="DataSet1">
     <Query>
       <DataSourceReference>dsvelocity</DataSourceReference>
-      <CommandText>select * from DataArt59</CommandText>
+      <DataSetParameters>
+        <DataSetParameter Name="@cif">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>select * from DataArt59
+where o_pdf_cif = @cif</CommandText>
     </Query>
     <Fields>
       <Field Name="scbRef">
@@ -127,5 +136,14 @@
         <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
     </Fields>
+    <Filters>
+      <Filter>
+        <FilterExpression>=Fields!o_pdf_cif.Value</FilterExpression>
+        <Operator>Equal</Operator>
+        <FilterValues>
+          <FilterValue>@cif</FilterValue>
+        </FilterValues>
+      </Filter>
+    </Filters>
   </DataSet>
 </SharedDataSet>
