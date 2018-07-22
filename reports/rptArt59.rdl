@@ -998,7 +998,8 @@
                                       <Style>
                                         <FontFamily>Arial</FontFamily>
                                         <FontSize>9pt</FontSize>
-                                      </Style>
+                                        <Format>#,0;(#,0)</Format>
+										</Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style>
