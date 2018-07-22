@@ -93,3 +93,47 @@
         {
             throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
         }
+
+
+                //return RedirectToAction("Error","Home");
+                //ErrorData errors = new ErrorData((int)HttpStatusCode.Unauthorized, "Invalid login");
+                //TempData["Error"] = JsonConvert.SerializeObject(errors);
+                //throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
+                //Content = new System.Net.Http.StringContent(string.Format("Invalid login descriptive")),
+
+
+
+        //[AllowAnonymous]
+        //public IActionResult Error()        {
+
+        //    string jsonvalue = (string) TempData["Error"];
+        //    if (jsonvalue == null)
+        //    {
+
+
+
+        //        var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+        //        // Get which route the exception occurred at
+
+        //        string routeWhereExceptionOccurred = exceptionFeature.Path;
+
+        //        // Get the exception that occurred
+        //        Exception exceptionThatOccurred = exceptionFeature.Error;
+        //        //throw exceptionThatOccurred;
+
+        //        HttpResponse response = HttpContext.Response;
+        //        //response.StatusCode = (int)status;
+        //        //response.ContentType = "application/json";
+        //        //var err = exceptionThatOccurred.StackTrace;
+        //        var err = exceptionThatOccurred.Message + "\n" +
+        //            exceptionThatOccurred.StackTrace;
+        //        //response.WriteAsync(err);
+        //        return View(new ErrorViewModel { RequestId  = err});
+        //    }
+        //    else
+        //    {
+        //        ErrorData errors = JsonConvert.DeserializeObject<ErrorData>(jsonvalue);
+        //        return StatusCode(errors.ErrorCode, errors.ErrorMessage);
+        //    }
+
+        //}

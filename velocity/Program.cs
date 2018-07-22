@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace velocity
 {
@@ -12,11 +13,21 @@ namespace velocity
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                //.UseEnvironment("Production")
-                .UseEnvironment("Development")
+                .ConfigureAppConfiguration(ConfigConfiguration)
+                .UseStartup<Startup>()
                 .UseKestrel()
                 .UseIISIntegration()
-                .UseStartup<Startup>()
                 .Build();
+
+        static void ConfigConfiguration(WebHostBuilderContext ctx, IConfigurationBuilder config)  
+        {
+            IHostingEnvironment env = ctx.HostingEnvironment;
+            config.SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables()
+                ;
+
+        }
     }
 }

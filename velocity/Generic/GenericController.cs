@@ -5,9 +5,8 @@ using AttributeRouting;
 using System;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Http;
-using System.Net;
-using Newtonsoft.Json;
-using velocity.Models;
+using System.Net.Http;
+
 
 namespace velocity.Generic
 {
@@ -30,10 +29,15 @@ namespace velocity.Generic
             var token = HttpContext.Session.GetString(Constants.Constants.SessionId);
             if (String.IsNullOrEmpty(token))
             {
-                ErrorData errors = new ErrorData((int)HttpStatusCode.Unauthorized, "Invalid login");
-                TempData["Error"] = JsonConvert.SerializeObject(errors);
-                throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
-                //return RedirectToAction("Error","Home");
+
+
+                HttpResponseMessage resp = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized)
+                {
+                    ReasonPhrase = "Invalid login"
+                };
+                throw new System.Web.Http.HttpResponseException(resp);
+
+
             }
 
         }

@@ -2,7 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-	<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>	
+	<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+	<Authors>saravanan</Authors>
+	<Company>velocity</Company>	
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using velocity.DataManager;
+using velocity.Generic;
 using velocity.Models;
 using velocity.Repository;
 
@@ -60,23 +61,25 @@ namespace velocity
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
-            //env.EnvironmentName = EnvironmentName.Production;
 
+
+            app.UseExceptionHandler(new ExceptionHandlerOptions
+            {
+                ExceptionHandler = new JsonExceptionMiddleware().Invoke
+            });
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
-                app.UseDeveloperExceptionPage();
                 Constants.Constants.IsDev = true;
 
             }
             else
             {
                 Constants.Constants.IsDev = false;
-                app.UseExceptionHandler("/Home/Error");
             }
 
             app.UseStaticFiles();

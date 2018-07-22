@@ -5,8 +5,7 @@ using velocity.DataManager;
 using Microsoft.AspNetCore.Http;
 using velocity.Extn;
 using System;
-using System.Net;
-using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace velocity.Controllers
 {
@@ -43,11 +42,12 @@ namespace velocity.Controllers
             if (row.GetType() !=  typeof(velocity.Models.User) )
             {
                 HttpContext.Session.SetString(Constants.Constants.SessionId, "");
-                //return StatusCode((int) HttpStatusCode.Unauthorized, (string) row);
-                ErrorData errors = new ErrorData((int)HttpStatusCode.Unauthorized, (string)row);
-                TempData["Error"] = JsonConvert.SerializeObject(errors);
-                throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
 
+                HttpResponseMessage resp = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized)
+                {
+                    ReasonPhrase = (string)row
+                };
+                throw new System.Web.Http.HttpResponseException(resp);
             }
 
             User user = (User) row;
