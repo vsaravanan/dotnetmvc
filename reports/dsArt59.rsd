@@ -5,10 +5,11 @@
       <DataSourceReference>dsvelocity</DataSourceReference>
       <DataSetParameters>
         <DataSetParameter Name="@cif">
+          <DefaultValue>271408</DefaultValue>
           <ReadOnly>false</ReadOnly>
-          <Nullable>false</Nullable>
+          <Nullable>true</Nullable>
           <OmitFromQuery>false</OmitFromQuery>
-          <rd:DbType>Object</rd:DbType>
+          <rd:DbType>String</rd:DbType>
         </DataSetParameter>
       </DataSetParameters>
       <CommandText>SELECT scbRef, o_pdf_cif, o_pdf_cif_buyer, o_pdf_cif_seller, o_pdf_h20, o_pdf_b2, o_pdf_b4, o_pdf_b6, o_pdf_b7, o_pdf_b9, o_pdf_b11, o_pdf_b13, o_pdf_b15, o_pdf_b16, o_pdf_b18, o_pdf_b20, o_pdf_b21, o_pdf_b23, o_pdf_b24, o_pdf_b25, 
@@ -35,7 +36,7 @@ WHERE  (o_pdf_cif = @cif)</CommandText>
       </Field>
       <Field Name="o_pdf_h20">
         <DataField>o_pdf_h20</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
       <Field Name="o_pdf_b2">
         <DataField>o_pdf_b2</DataField>
@@ -55,11 +56,11 @@ WHERE  (o_pdf_cif = @cif)</CommandText>
       </Field>
       <Field Name="o_pdf_b9">
         <DataField>o_pdf_b9</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
       <Field Name="o_pdf_b11">
         <DataField>o_pdf_b11</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
       <Field Name="o_pdf_b13">
         <DataField>o_pdf_b13</DataField>
@@ -79,7 +80,7 @@ WHERE  (o_pdf_cif = @cif)</CommandText>
       </Field>
       <Field Name="o_pdf_b20">
         <DataField>o_pdf_b20</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Decimal</rd:TypeName>
       </Field>
       <Field Name="o_pdf_b21">
         <DataField>o_pdf_b21</DataField>
@@ -87,7 +88,7 @@ WHERE  (o_pdf_cif = @cif)</CommandText>
       </Field>
       <Field Name="o_pdf_b23">
         <DataField>o_pdf_b23</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Decimal</rd:TypeName>
       </Field>
       <Field Name="o_pdf_b24">
         <DataField>o_pdf_b24</DataField>
@@ -95,7 +96,7 @@ WHERE  (o_pdf_cif = @cif)</CommandText>
       </Field>
       <Field Name="o_pdf_b25">
         <DataField>o_pdf_b25</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Decimal</rd:TypeName>
       </Field>
       <Field Name="o_pdf_b26">
         <DataField>o_pdf_b26</DataField>
@@ -103,7 +104,7 @@ WHERE  (o_pdf_cif = @cif)</CommandText>
       </Field>
       <Field Name="o_pdf_b28">
         <DataField>o_pdf_b28</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Decimal</rd:TypeName>
       </Field>
       <Field Name="o_pdf_b29">
         <DataField>o_pdf_b29</DataField>
@@ -111,7 +112,7 @@ WHERE  (o_pdf_cif = @cif)</CommandText>
       </Field>
       <Field Name="o_pdf_b31">
         <DataField>o_pdf_b31</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Decimal</rd:TypeName>
       </Field>
       <Field Name="o_pdf_b32">
         <DataField>o_pdf_b32</DataField>
